@@ -42,13 +42,19 @@ function drawCircles() {
 }
 
 function drawLine() {
-  const y = Math.abs(b.dataSync()[0] - 1) * 400;
-  const x = m.dataSync()[0] * 400 + y;
-  ctx.clearRect(0, 0, 400, 400);
+  const y = Math.abs(b.dataSync()[0] - 1) * HEIGHT;
+  const pred = -1 * m.dataSync()[0] * HEIGHT;
+  console.log(pred, y);
+  m.print();
+  b.print();
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, WIDTH, HEIGHT);
   drawCircles();
-  ctx.strokeStyle = "blue";
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = "white";
   ctx.moveTo(0, y);
-  ctx.lineTo(400, x);
+  ctx.lineTo(WIDTH, y + pred);
   ctx.stroke();
 }
 
